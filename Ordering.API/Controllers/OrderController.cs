@@ -24,12 +24,11 @@ namespace Ordering.API.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<OrderResponse>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> GetOrdersByUsername(string username)
+        public async Task<ActionResult<IEnumerable<OrderResponse>>> GetOrdersByUsername(string username)
         {
-            var order = _orderRepository.GetOrdersByUsername(username);
-            var orderMapping = _mapper.Map<OrderResponse>(order);
-            return Accepted(orderMapping);
-            throw new NotImplementedException();
+            var orderList = await _orderRepository.GetOrdersByUsername(username);
+            var orderResponseList = _mapper.Map<IEnumerable<OrderResponse>>(orderList);
+            return Ok(orderResponseList);
         }
     }
 }
