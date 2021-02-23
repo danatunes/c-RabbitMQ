@@ -26,9 +26,9 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<OrderResponse>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<OrderResponse>>> GetOrdersByUsername(string username)
         {
-            var orderList = await _orderRepository.GetOrdersByUsername(username);
-            var orderResponseList = _mapper.Map<IEnumerable<OrderResponse>>(orderList);
-            return Ok(orderResponseList);
+            var listOrder = await _orderRepository.GetOrdersByUsername(username);
+            var listOrderMap = _mapper.Map<IEnumerable<OrderResponse>>(listOrder);
+            return Ok(listOrderMap);
         }
     }
 }
