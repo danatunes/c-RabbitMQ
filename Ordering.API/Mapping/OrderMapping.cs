@@ -10,8 +10,8 @@ namespace Ordering.API.Mapping
     {
         public OrderMapping()
         {
-            CreateMap<BasketCheckoutEvent , Order>().ReverseMap();
-            CreateMap<Order, OrderResponse>().ReverseMap();
+            CreateMap<BasketCheckoutEvent , Order>();
+            CreateMap<Order, OrderResponse>();
         }
     }
 }
